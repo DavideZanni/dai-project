@@ -1,0 +1,12 @@
+archive/
+.claude/
+.opencode/
+*.pdf
+*.log
+*.aux
+*.out
+*.lof
+*.lot
+*.toc
+__pycache__/
+*.pyc

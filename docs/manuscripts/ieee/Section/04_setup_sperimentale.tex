@@ -1,0 +1,37 @@
+\section{Setup sperimentale}
+La validazione è stata eseguita sui risultati presenti in \texttt{results/plots}, generati tramite BehaviorSpace. Le campagne sperimentali coprono diverse configurazioni parametrizzabili tramite l'interfaccia di NetLogo o via script headless.
+
+\subsection{Configurazione dell'ambiente e parametri globali}
+Il sistema opera su un dominio spaziale di $41 \times 41$ patch, con le seguenti impostazioni fisse per garantire la confrontabilità:
+\begin{itemize}
+    \item \textbf{World Size:} $[-20, 20]$ su entrambi gli assi.
+    \item \textbf{Patch size:} 13.5 pixel/patch, che definisce la risoluzione della discretizzazione.
+    \item \textbf{Moore Neighborhood:} 8 vicini, abilitando movimenti diagonali e micro-correzioni di traiettoria.
+    \item \textbf{Static Field Decay:} Impostato per coprire l'intero raggio della rotonda senza zone morte.
+    \item \textbf{Friction coefficient ($\alpha$):} $0.1$, parametro che modella l'inerzia nel cambio di patch in zone congestionate.
+\end{itemize}
+Lo stato iniziale vede i pedoni generati ai quattro ingressi cardinali con una distribuzione uniforme, garantendo una pressione di carico bilanciata sulla rete fin dai primi tick.
+
+\subsection{Esperimento 1: Fundamental Diagram}
+L'esperimento varia il numero totale di pedoni in $\{40,80,\ldots,400\}$ mantenendo costanti $K_s = 1.0$, $K_d = 2.0$, $K_r = 1.0$ e raggio della rotonda pari a 10. Le metriche considerate sono:
+\begin{itemize}
+\item \texttt{throughput-per-tick};
+\item velocità effettiva media;
+\item \texttt{mean-exit-time}.
+\end{itemize}
+
+\subsection{Esperimento 2: Self-Organization}
+L'esperimento varia il peso del campo dinamico $K_d \in \{0.0,0.5,1.0,2.0,4.0,8.0\}$ a densità intermedia costante (\texttt{num-pedestrians} = 160). Le metriche principali sono:
+\begin{itemize}
+\item $\phi_{max}$, indice massimo di segregazione;
+\item tick di stabilizzazione per $\phi \geq 0.9$.
+\end{itemize}
+
+\subsection{Esperimento 3: Geometry Optimization}
+L'esperimento varia il raggio della rotonda in $\{5,8,10,12\}$ con 240 pedoni. La configurazione $R = 15$ è stata esclusa perché incompatibile con la dimensione del dominio discretizzato. Le metriche osservate sono throughput totale e tempo medio di uscita.
+
+\subsection{Esperimento 4: Repulsion Impact}
+L'esperimento varia $K_r \in \{0.5,1.0,2.0,5.0\}$ con densità media costante. L'obiettivo è valutare come la geometria della rotonda mitighi gli effetti della repulsione locale.
+
+\subsection{Metriche e limiti interpretativi}
+Un dettaglio metodologico importante riguarda \texttt{throughput-per-tick}: nel CSV esportato esso rappresenta le uscite nell'ultimo tick del run, non una media temporale sull'intera esecuzione. Per questo motivo l'interpretazione del collasso di capacità si appoggia soprattutto a \texttt{mean-exit-time} e alla velocità effettiva media, metriche più stabili.

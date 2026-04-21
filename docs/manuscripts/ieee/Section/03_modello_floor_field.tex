@@ -1,0 +1,16 @@
+\section{Modello \textit{Floor Field}}
+La transizione probabilistica del sistema è guidata da una terna di campi discreti imposti sulla griglia spaziale.
+
+Per ciascuna delle quattro destinazioni, il modello costruisce un campo statico $S_k$ mediante \textit{Breadth-First Search} multi-source a partire dalle patch di uscita. Se $d_k(i,j)$ indica la distanza discreta dalla patch $(i,j)$ all'uscita $k$, il campo usato nella transizione è ottenuto per inversione: diviene quindi attrattivo con raggio d'azione proporzionale alla vicinanza relativa.
+
+Il contributo più originale dell'implementazione è l'uso di un \textit{penalty trick} durante la BFS. Alcune regioni del dominio vengono percorse con costo artificiale maggiore quando favorirebbero la rotazione opposta a quella desiderata. In formula, il costo locale di propagazione può essere scritto come asimmetrico e sfavorevole, polarizzando così intrinsecamente la rotatoria ad imporre una vorticità antioraria, prima ancora dell'arrivo del flusso pedonale nel nodo di attraversamento.
+
+Il campo dinamico $D_k$ costituisce la base per la stigmergia \cite{burstedde2001}: viene "depositato" dal pedone sulla patch corrente, subendo ciclicamente i processi di \textit{diffusion} e \textit{decay}. Questo crea canali di passaggio fortemente battuti e favorisce lo stratificarsi del \textit{lane formation}.
+
+Infine, il campo repulsivo $R$ computa localmente il \textit{costo sociale} della densità, ostacolando l'aggregazione eccessiva di pedoni in prossimità tra loro.
+
+La formula che integra tutti gli stimoli decisionali è posta alla base della scelta stocastica di moto:
+$$
+P_{ij} \propto (1 - n_{ij}) \cdot \exp(K_s S_{ij}) \cdot \exp(K_d D_{ij}) \cdot \exp(-K_r R_{ij})
+$$
+dove $n_{ij}$ è una funzione indicatrice per l'esclusione di volume.

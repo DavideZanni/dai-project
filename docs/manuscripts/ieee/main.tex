@@ -1,0 +1,51 @@
+\documentclass[conference]{IEEEtran}
+\IEEEoverridecommandlockouts
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage[italian]{babel}
+\usepackage{graphicx}
+\usepackage{amsmath}
+\usepackage{booktabs}
+\usepackage{float}
+\usepackage{cite}
+\usepackage{hyperref}
+\usepackage{caption}
+
+\renewcommand{\thesubsection}{\thesection.\arabic{subsection}}
+\renewcommand{\thesubsubsection}{\thesubsection.\arabic{subsubsection}}
+
+\title{\textbf{Roundabout Pedonale come Sistema di Distributed Artificial Intelligence Passiva:\\
+Analisi con Floor Field Model, Automi Cellulari e Validazione Sperimentale}}
+
+\author{
+    \textbf{Zanni Davide}\\
+    Università degli studi di Modena e Reggio Emilia\\
+    Dipartimento di Ingegneria ``Enzo Ferrari''\\
+    250960@studenti.unimore.it
+}
+\date{}
+
+\begin{document}
+\maketitle
+
+\begin{abstract}
+\itshape
+Questo lavoro presenta uno studio sulla dinamica pedonale in una rotonda a quattro bracci modellata mediante automi cellulari e Floor Field Model in ambiente NetLogo. L'obiettivo è analizzare la rotonda non solo come soluzione urbanistica, ma come meccanismo di \textit{Distributed Artificial Intelligence passiva}, in cui il coordinamento collettivo emerge dalla geometria, dai campi di costo locali e dalla stigmergia ambientale piuttosto che da comunicazione esplicita tra agenti. Il modello integra campo statico, campo dinamico e campo repulsivo in una funzione di transizione stocastica su vicinato di Moore, con una procedura BFS polarizzata che induce rotazione antioraria e converte crossing flows in flussi tangenziali. La validazione sperimentale si basa su cinque campagne di test: diagramma fondamentale, auto-organizzazione, ottimizzazione geometrica, impatto della repulsione e analisi dei profili psicologici (Social Types). I risultati mostrano che la rotonda impone una segregazione quasi perfetta dei flussi anche per valori nulli del coordinamento dinamico, riduce la sensibilità del sistema agli incontri frontali e presenta un chiaro trade-off tra separazione dei flussi e \textit{clogging effect} al crescere del raggio dell'isola centrale. Inoltre, l'eterogeneità comportamentale dimostra come profili puramente utilitaristici riducano l'efficienza sistemica generando attrito prossimale. Il lavoro collega quantitativamente il comportamento osservato alla letteratura di Burstedde, Helbing, Weng, Zhang e Yanagisawa, mostrando come la topologia dello spazio possa agire come dispositivo computazionale distribuito incorporato.
+\end{abstract}
+
+\input{Section/01_introduzione.tex}
+\input{Section/02_architettura.tex}
+\input{Section/03_modello_floor_field.tex}
+\input{Section/04_setup_sperimentale.tex}
+\input{Section/05_risultati.tex}
+\input{Section/06_discussione.tex}
+\input{Section/07_conclusioni.tex}
+
+\newpage
+\section{Fonti bibliografiche e sitografia}
+\bibliographystyle{IEEEtran}
+\bibliography{bibliografia}
+\listoffigures
+\listoftables
+
+\end{document}

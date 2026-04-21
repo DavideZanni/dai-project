@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="us-ascii"?>
+<experiments>
+  <experiment name="Automated_Test" repetitions="1" runMetricsEveryStep="false">
+    <setup>setup</setup>
+    <go>go</go>
+    <timeLimit steps="100"/>
+    <metric>phi-max</metric>
+    <enumeratedValueSet variable="num-pedestrians">
+      <value value="50"/>
+      <value value="100"/>
+    </enumeratedValueSet>
+  </experiment>
+</experiments>

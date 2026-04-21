@@ -1,0 +1,11 @@
+Progetto:
+Agenti che simulano pedoni in un ambiente affollato
+
+vedere cosa succede in ambienti piu complessi al variare dei param. (Simulo rotonda o incrocio)
+
+Oppure confrontwarlo con altri modelli che trovo in giro
+
+lane formation
+
+num.uffi:
+6187

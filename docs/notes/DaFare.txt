@@ -1,0 +1,7 @@
+DaFare:
+
+- Capire cosa ha fatto claude
+- Riordinare i file 
+- Fare esperimenti e grafici
+- Migliorare il report in uno unico che faccia sia da guida che da report finale
+- Eliminare file inutili

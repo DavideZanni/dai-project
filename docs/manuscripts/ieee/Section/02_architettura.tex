@@ -1,0 +1,10 @@
+\section{Architettura del Modello}
+Il modello implementato in NetLogo discretizza lo spazio in una \texttt{world grid} di 41x41 patch, dove ciascuna patch può rappresentare uno spazio percorribile o un muro. Un pedone occupa esattamente una cella.
+
+La topologia della rotonda è costruita intagliando un'area calpestabile: un anello circolare delimitato da un raggio interno e uno esterno, incrociato da due corridoi rettilinei ortogonali. La rottura della simmetria originata dall'isola centrale impone ai flussi perpendicolari di inserirsi obbligatoriamente nella circolazione tangenziale dell'anello.
+
+La cinematica discreta del modello usa un \textit{Moore neighborhood} a 8 celle adiacenti più l'opzione di permanenza sulla cella corrente. Ciò produce 9 possibili scelte di transizione per ogni agente: 8 derivanti dalle direzioni cardinali/diagonali e 1 dalla possibilità di restare fermi (\texttt{stay}).
+
+Questa scelta è coerente con il \textit{flood fill} dei campi statici e riduce l'anisotropia che emergerebbe da un vicinato di Von Neumann. Dal punto di vista fisico, il vicinato di Moore permette micro-correzioni diagonali e rende più naturale la circolazione nell'anello.
+
+Questa è la ragione per cui il sistema può essere descritto come esempio di intelligenza distribuita passiva: l'ordine globale non viene imposto tramite controllo centralizzato, bensì tramite \textit{environmental biasing}.
