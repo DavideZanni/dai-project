@@ -8,7 +8,6 @@ Questo progetto implementa una simulazione di dinamiche pedonali in una rotonda 
 - **`src/`**: Script Python per l'automazione, l'esecuzione parallela degli esperimenti e l'analisi dei dati.
 - **`docs/`**: Documentazione di progetto, relazioni scientifiche e note di lavoro.
 - **`results/`**: Output dei test, file CSV con i risultati degli esperimenti e grafici generati.
-- **`archive/`**: Versioni precedenti o materiali di supporto dei collaboratori.
 
 ## Come eseguire gli esperimenti
 
